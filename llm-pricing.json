@@ -1,0 +1,356 @@
+{
+  "metadata": {
+    "last_updated": "2025-01-29T00:00:00Z",
+    "version": "1.0"
+  },
+  "providers": [
+    {
+      "provider": "google",
+      "provider_name": "Google",
+      "models": [
+        {
+          "model_id": "gemini-1.5-pro",
+          "model_name": "Gemini 1.5 Pro",
+          "context_length": 2000000,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 1.25,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 5.0,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 0.625,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 2.5,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        },
+        {
+          "model_id": "gemini-1.5-pro-latest",
+          "model_name": "Gemini 1.5 Pro (Latest)",
+          "context_length": 2000000,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 1.25,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 5.0,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 0.625,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 2.5,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        },
+        {
+          "model_id": "gemini-1.5-flash",
+          "model_name": "Gemini 1.5 Flash",
+          "context_length": 1000000,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 0.075,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 0.3,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 0.0375,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 0.15,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        },
+        {
+          "model_id": "gemini-1.5-flash-latest",
+          "model_name": "Gemini 1.5 Flash (Latest)",
+          "context_length": 1000000,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 0.075,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 0.3,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 0.0375,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 0.15,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        },
+        {
+          "model_id": "gemini-1.0-pro",
+          "model_name": "Gemini 1.0 Pro",
+          "context_length": 32768,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 0.5,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 1.5,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 0.25,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 0.75,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        }
+      ]
+    },
+    {
+      "provider": "openai",
+      "provider_name": "OpenAI",
+      "models": [
+        {
+          "model_id": "gpt-4o",
+          "model_name": "GPT-4o",
+          "context_length": 128000,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 2.5,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 10.0,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 0.5,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 2.5,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        },
+        {
+          "model_id": "gpt-4o-mini",
+          "model_name": "GPT-4o Mini",
+          "context_length": 128000,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 0.15,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 0.6,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 0.03,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 0.12,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        },
+        {
+          "model_id": "gpt-4-turbo",
+          "model_name": "GPT-4 Turbo",
+          "context_length": 128000,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 10.0,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 30.0,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 1.0,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 3.0,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        },
+        {
+          "model_id": "gpt-4",
+          "model_name": "GPT-4",
+          "context_length": 8192,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 30.0,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 60.0,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 3.0,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 6.0,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        },
+        {
+          "model_id": "gpt-4-32k",
+          "model_name": "GPT-4 32k",
+          "context_length": 32768,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 60.0,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 120.0,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 6.0,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 12.0,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        },
+        {
+          "model_id": "gpt-3.5-turbo",
+          "model_name": "GPT-3.5 Turbo",
+          "context_length": 16385,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 0.5,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 1.5,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 0.08,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 0.24,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "production"
+        },
+        {
+          "model_id": "gpt-3.5-turbo-16k",
+          "model_name": "GPT-3.5 Turbo 16k",
+          "context_length": 16385,
+          "pricing": {
+            "standard": {
+              "input": {
+                "price_per_million_tokens": 3.0,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 4.0,
+                "currency": "USD"
+              }
+            },
+            "batch": {
+              "input": {
+                "price_per_million_tokens": 0.48,
+                "currency": "USD"
+              },
+              "output": {
+                "price_per_million_tokens": 0.64,
+                "currency": "USD"
+              }
+            }
+          },
+          "availability": "deprecated"
+        }
+      ]
+    }
+  ]
+}
