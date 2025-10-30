@@ -51,12 +51,25 @@ function calcCost(tokensIn, tokensOut, m, useBatch){
   return pin + pout;
 }
 
+function calcCostWithCached(tokens, m, useBatch, cacheFactor){
+  const inPrice = useBatch ? m.batch_input : m.input;
+  const outPrice = useBatch ? m.batch_output : m.output;
+  if(inPrice == null && outPrice == null) return null;
+  const pin = inPrice ? (tokens.in/1e6) * inPrice : 0;
+  const pcached = inPrice ? (tokens.cached/1e6) * inPrice * (cacheFactor ?? 0.5) : 0;
+  const pout = outPrice ? (tokens.out/1e6) * outPrice : 0;
+  return pin + pcached + pout;
+}
+
 function renderRows(rows){
   const tbody = document.getElementById('tableBody');
   tbody.innerHTML = '';
   const frag = document.createDocumentFragment();
   for(const r of rows){
     const tr = document.createElement('tr');
+    const key = `${r.provider}::${r.model_id || r.model_name}`;
+    tr.dataset.key = key;
+    const tokens = window.__state && window.__state.inputs[key] || { in: 0, cached: 0, out: 0 };
     tr.innerHTML = `
       <td>${r.provider}</td>
       <td>${r.model_name}</td>
@@ -66,11 +79,17 @@ function renderRows(rows){
       <td class="price batch-col">${fmtPrice(r.batch_output)}</td>
       <td>${fmtContext(r.context_length)}</td>
       <td><span class="avail ${r.availability==='production'?'prod':''}">${r.availability}</span></td>
+      <td><input type="number" min="0" step="1" class="tok tok-in" value="${tokens.in}"></td>
+      <td><input type="number" min="0" step="1" class="tok tok-cached" value="${tokens.cached}"></td>
+      <td><input type="number" min="0" step="1" class="tok tok-out" value="${tokens.out}"></td>
+      <td class="cost std-cost">—</td>
+      <td class="cost batch-cost batch-col">—</td>
     `;
     frag.appendChild(tr);
   }
   tbody.appendChild(frag);
   document.getElementById('rowCount').textContent = `${rows.length} model${rows.length===1?'':'s'}`;
+  wireRowInputs();
 }
 
 function applyFilterSort(state){
@@ -118,11 +137,18 @@ function setupUI(state){
   const reset = document.getElementById('reset');
   const showBatch = document.getElementById('showBatch');
   const table = document.getElementById('priceTable');
+  const cacheFactorEl = document.getElementById('cacheFactor');
 
   search.addEventListener('input', () => { state.query = search.value; applyFilterSort(state); });
   reset.addEventListener('click', () => { search.value=''; state.query=''; applyFilterSort(state); });
   showBatch.addEventListener('change', () => {
     table.classList.toggle('hide-batch', !showBatch.checked);
+  });
+  cacheFactorEl.addEventListener('input', () => {
+    const v = Number(cacheFactorEl.value);
+    state.cacheFactor = isFinite(v) ? Math.max(0, Math.min(1, v)) : 0.5;
+    cacheFactorEl.value = String(state.cacheFactor.toFixed(2));
+    recalcAllRows(state);
   });
 
   // Model select + calculator
@@ -162,12 +188,85 @@ function setupUI(state){
   return { populateSelect, updateCalc };
 }
 
+function wireRowInputs(){
+  const tbody = document.getElementById('tableBody');
+  const state = window.__state;
+  const updateRow = (tr, model) => {
+    const key = tr.dataset.key;
+    const inEl = tr.querySelector('.tok-in');
+    const cachedEl = tr.querySelector('.tok-cached');
+    const outEl = tr.querySelector('.tok-out');
+    const stdCell = tr.querySelector('.std-cost');
+    const batchCell = tr.querySelector('.batch-cost');
+    const tokens = {
+      in: Number(inEl.value || 0),
+      cached: Number(cachedEl.value || 0),
+      out: Number(outEl.value || 0),
+    };
+    state.inputs[key] = tokens;
+    const std = calcCostWithCached(tokens, model, false, state.cacheFactor);
+    const bat = calcCostWithCached(tokens, model, true, state.cacheFactor);
+    const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
+    stdCell.textContent = fmt(std);
+    batchCell.textContent = fmt(bat);
+  };
+
+  // Build a quick lookup from key -> model
+  const modelByKey = new Map();
+  for(const m of state.data){
+    const key = `${m.provider}::${m.model_id || m.model_name}`;
+    modelByKey.set(key, m);
+  }
+
+  tbody.querySelectorAll('tr').forEach(tr => {
+    const key = tr.dataset.key;
+    const model = modelByKey.get(key);
+    if(!model) return;
+    const inputs = tr.querySelectorAll('input.tok');
+    inputs.forEach(inp => inp.addEventListener('input', () => updateRow(tr, model)));
+    // initial compute
+    updateRow(tr, model);
+  });
+}
+
+function recalcAllRows(state){
+  const tbody = document.getElementById('tableBody');
+  const modelByKey = new Map();
+  for(const m of state.data){
+    const key = `${m.provider}::${m.model_id || m.model_name}`;
+    modelByKey.set(key, m);
+  }
+  tbody.querySelectorAll('tr').forEach(tr => {
+    const key = tr.dataset.key;
+    const m = modelByKey.get(key);
+    if(!m) return;
+    const inEl = tr.querySelector('.tok-in');
+    const cachedEl = tr.querySelector('.tok-cached');
+    const outEl = tr.querySelector('.tok-out');
+    const stdCell = tr.querySelector('.std-cost');
+    const batchCell = tr.querySelector('.batch-cost');
+    const tokens = {
+      in: Number(inEl.value || 0),
+      cached: Number(cachedEl.value || 0),
+      out: Number(outEl.value || 0),
+    };
+    const std = calcCostWithCached(tokens, m, false, state.cacheFactor);
+    const bat = calcCostWithCached(tokens, m, true, state.cacheFactor);
+    const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
+    stdCell.textContent = fmt(std);
+    batchCell.textContent = fmt(bat);
+  });
+}
+
 async function main(){
   const state = {
     data: [],
     query: '',
     sort: { key: 'provider', dir: 'asc' },
+    inputs: {}, // key -> {in, cached, out}
+    cacheFactor: 0.5,
   };
+  window.__state = state;
   const status = document.getElementById('dataStatus');
   try{
     const results = await Promise.allSettled(DATA_FILES.map(fetchJsonAny));

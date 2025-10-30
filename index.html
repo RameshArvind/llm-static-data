@@ -26,6 +26,10 @@
           </label>
         </div>
         <div class="control">
+          <label for="cacheFactor">Cached input factor</label>
+          <input id="cacheFactor" type="number" min="0" max="1" step="0.05" value="0.50" />
+        </div>
+        <div class="control">
           <button id="reset" type="button">Reset</button>
         </div>
       </section>
@@ -66,6 +70,11 @@
                 <th class="batch-col" data-sort="batch_output">Batch Output $/M</th>
                 <th data-sort="context_length">Context</th>
                 <th data-sort="availability">Availability</th>
+                <th>In Tokens</th>
+                <th>Cached Tokens</th>
+                <th>Out Tokens</th>
+                <th>Cost (Std)</th>
+                <th class="batch-col">Cost (Batch)</th>
               </tr>
             </thead>
             <tbody id="tableBody"></tbody>

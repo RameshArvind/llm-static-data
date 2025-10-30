@@ -14,6 +14,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 .control{display:flex;align-items:center;gap:8px}
 .control label{font-size:14px;color:var(--muted)}
 #search{padding:8px 10px;background:var(--panel);border:1px solid var(--border);color:var(--text);border-radius:8px;min-width:260px}
+input[type="number"]#cacheFactor{width:90px}
 button{padding:8px 12px;background:var(--panel);border:1px solid var(--border);color:var(--text);border-radius:8px;cursor:pointer}
 button:hover{border-color:var(--accent)}
 .calc{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin:0 0 16px}
@@ -29,6 +30,8 @@ table{width:100%;border-collapse:separate;border-spacing:0}
 thead th{position:sticky;top:0;background:#0c1422;border-bottom:1px solid var(--border);text-align:left;padding:10px;font-size:13px;color:#c8d1db;cursor:pointer}
 tbody td{padding:10px;border-bottom:1px solid var(--border);font-size:14px}
 tbody tr:hover{background:#0d1523}
+.tok{width:120px;max-width:140px;padding:6px 8px;background:#0b1320;border:1px solid var(--border);color:var(--text);border-radius:8px}
+.cost{font-family:var(--mono)}
 .price{font-family:var(--mono)}
 .avail{font-size:12px;padding:2px 6px;border-radius:999px;border:1px solid var(--border);color:#cfe7ff;background:#0a1a2c;display:inline-block}
 .avail.prod{border-color:#1f5838;background:#0a2016;color:#a3f3c1}
@@ -39,4 +42,3 @@ tbody tr:hover{background:#0d1523}
 @media (max-width: 800px){
   .calc-grid{grid-template-columns:1fr 1fr}
 }
-
