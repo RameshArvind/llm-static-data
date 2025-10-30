@@ -34,28 +34,7 @@
         </div>
       </section>
 
-      <section class="calc">
-        <h2>Cost Calculator</h2>
-        <div class="calc-grid">
-          <label>
-            Model
-            <select id="modelSelect"></select>
-          </label>
-          <label>
-            Input tokens
-            <input id="inputTokens" type="number" min="0" step="1" value="100000" />
-          </label>
-          <label>
-            Output tokens
-            <input id="outputTokens" type="number" min="0" step="1" value="20000" />
-          </label>
-          <div class="result">
-            <div id="costStandard">Standard: —</div>
-            <div id="costBatch" class="muted">Batch: —</div>
-          </div>
-        </div>
-        <p class="hint muted">Assumes USD and prices per 1M tokens.</p>
-      </section>
+      
 
       <section>
         <div class="table-wrap">
@@ -73,8 +52,8 @@
                 <th>In Tokens</th>
                 <th>Cached Tokens</th>
                 <th>Out Tokens</th>
-                <th>Cost (Std)</th>
-                <th class="batch-col">Cost (Batch)</th>
+                <th data-sort="std_cost">Cost (Std)</th>
+                <th class="batch-col" data-sort="batch_cost">Cost (Batch)</th>
               </tr>
             </thead>
             <tbody id="tableBody"></tbody>

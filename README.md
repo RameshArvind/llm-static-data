@@ -22,4 +22,4 @@ Notes:
 - The app reads from `anthropic-pricing.json` and `google-pricing` (treated as JSON). Add more files by editing `DATA_FILES` in `app.js`.
 - Table columns include Standard and Batch prices when available.
 - Calculator uses prices per 1M tokens; enter your input/output token counts to estimate cost.
-- Per-row calculator: Enter Input, Cached Input, and Output tokens in the table to see live Standard and Batch costs. Adjust the "Cached input factor" (default 0.50) in the top controls to model provider-specific cache discounts.
+- Per-row calculator only: Enter Input, Cached Input, and Output tokens directly in the table to see live Standard and Batch costs per model. Adjust the "Cached input factor" (default 0.50) in the top controls to model provider-specific cache discounts.

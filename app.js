@@ -101,7 +101,18 @@ function applyFilterSort(state){
   const key = state.sort.key;
   if(key){
     const dir = state.sort.dir;
+    const getCost = (m, batch) => {
+      const k = `${m.provider}::${m.model_id || m.model_name}`;
+      const t = state.inputs[k] || {in:0, cached:0, out:0};
+      return calcCostWithCached(t, m, batch, state.cacheFactor) ?? Number.POSITIVE_INFINITY;
+    };
     const cmp = (a,b) => {
+      if(key === 'std_cost'){
+        return getCost(a,false) - getCost(b,false);
+      }
+      if(key === 'batch_cost'){
+        return getCost(a,true) - getCost(b,true);
+      }
       const av = a[key];
       const bv = b[key];
       if(av == null && bv == null) return 0;
@@ -151,41 +162,7 @@ function setupUI(state){
     recalcAllRows(state);
   });
 
-  // Model select + calculator
-  const select = document.getElementById('modelSelect');
-  const inEl = document.getElementById('inputTokens');
-  const outEl = document.getElementById('outputTokens');
-  const costStd = document.getElementById('costStandard');
-  const costBatch = document.getElementById('costBatch');
-
-  function populateSelect(){
-    select.innerHTML = '';
-    state.data.forEach((m, idx) => {
-      const opt = document.createElement('option');
-      opt.value = String(idx);
-      opt.textContent = `${m.provider} – ${m.model_name}`;
-      select.appendChild(opt);
-    });
-  }
-
-  function updateCalc(){
-    const idx = Number(select.value || 0) || 0;
-    const m = state.data[idx];
-    const tin = Number(inEl.value || 0);
-    const tout = Number(outEl.value || 0);
-    if(!m){ costStd.textContent = 'Standard: —'; costBatch.textContent='Batch: —'; return; }
-    const c1 = calcCost(tin, tout, m, false);
-    const c2 = calcCost(tin, tout, m, true);
-    const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
-    costStd.textContent = `Standard: ${fmt(c1)}`;
-    costBatch.textContent = `Batch: ${fmt(c2)}`;
-  }
-
-  select.addEventListener('change', updateCalc);
-  inEl.addEventListener('input', updateCalc);
-  outEl.addEventListener('input', updateCalc);
-
-  return { populateSelect, updateCalc };
+  return {};
 }
 
 function wireRowInputs(){
@@ -326,13 +303,11 @@ async function main(){
     const anyBatch = deduped.some(d => d.batch_input != null || d.batch_output != null);
     table.classList.toggle('hide-batch', !anyBatch);
 
-    const ui = setupUI(state);
+    setupUI(state);
     setupSort(state);
     applyFilterSort(state);
     // Ensure delegated listeners exist and initial compute runs
     setupDelegatedRowInputs(state);
-    ui.populateSelect();
-    ui.updateCalc();
   }catch(err){
     console.error(err);
     status.textContent = `Failed to load data: ${err.message}`;
