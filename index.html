@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LLM Prices (Static)</title>
+    <meta name="description" content="Compare LLM model pricing across providers. Static viewer for local pricing JSON files." />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>LLM Prices</h1>
+      <p class="subtitle">Static comparison of model pricing from local data</p>
+    </header>
+
+    <main class="container">
+      <section class="controls">
+        <div class="control">
+          <label for="search">Search</label>
+          <input id="search" type="search" placeholder="Filter by provider or model" />
+        </div>
+        <div class="control">
+          <label for="showBatch">
+            <input id="showBatch" type="checkbox" checked /> Show batch pricing
+          </label>
+        </div>
+        <div class="control">
+          <button id="reset" type="button">Reset</button>
+        </div>
+      </section>
+
+      <section class="calc">
+        <h2>Cost Calculator</h2>
+        <div class="calc-grid">
+          <label>
+            Model
+            <select id="modelSelect"></select>
+          </label>
+          <label>
+            Input tokens
+            <input id="inputTokens" type="number" min="0" step="1" value="100000" />
+          </label>
+          <label>
+            Output tokens
+            <input id="outputTokens" type="number" min="0" step="1" value="20000" />
+          </label>
+          <div class="result">
+            <div id="costStandard">Standard: —</div>
+            <div id="costBatch" class="muted">Batch: —</div>
+          </div>
+        </div>
+        <p class="hint muted">Assumes USD and prices per 1M tokens.</p>
+      </section>
+
+      <section>
+        <div class="table-wrap">
+          <table id="priceTable">
+            <thead>
+              <tr>
+                <th data-sort="provider">Provider</th>
+                <th data-sort="model_name">Model</th>
+                <th data-sort="input">Input $/M</th>
+                <th data-sort="output">Output $/M</th>
+                <th class="batch-col" data-sort="batch_input">Batch Input $/M</th>
+                <th class="batch-col" data-sort="batch_output">Batch Output $/M</th>
+                <th data-sort="context_length">Context</th>
+                <th data-sort="availability">Availability</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+        <div id="rowCount" class="muted"></div>
+      </section>
+
+      <section class="about">
+        <h3>About</h3>
+        <p>
+          This is a simple, static viewer for LLM pricing using the JSON files in this repository
+          (<code>anthropic-pricing.json</code> and <code>google-pricing.json</code>).
+        </p>
+        <p class="muted">No tracking, no build step; suitable for GitHub Pages.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span id="dataStatus">Loading…</span>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+  </html>
