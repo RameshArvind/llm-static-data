@@ -229,6 +229,38 @@ function wireRowInputs(){
   });
 }
 
+function setupDelegatedRowInputs(state){
+  const tbody = document.getElementById('tableBody');
+  if(tbody.dataset.delegated === '1') return;
+  tbody.dataset.delegated = '1';
+  tbody.addEventListener('input', (e) => {
+    const target = e.target;
+    if(!target.classList || !target.classList.contains('tok')) return;
+    const tr = target.closest('tr');
+    const key = tr?.dataset?.key;
+    if(!key) return;
+    const m = window.__state.data.find(x => `${x.provider}::${x.model_id || x.model_name}` === key);
+    if(!m) return;
+    // Reuse the same logic as recalcAllRows but for a single row
+    const inEl = tr.querySelector('.tok-in');
+    const cachedEl = tr.querySelector('.tok-cached');
+    const outEl = tr.querySelector('.tok-out');
+    const stdCell = tr.querySelector('.std-cost');
+    const batchCell = tr.querySelector('.batch-cost');
+    const tokens = {
+      in: Number(inEl.value || 0),
+      cached: Number(cachedEl.value || 0),
+      out: Number(outEl.value || 0),
+    };
+    window.__state.inputs[key] = tokens;
+    const std = calcCostWithCached(tokens, m, false, window.__state.cacheFactor);
+    const bat = calcCostWithCached(tokens, m, true, window.__state.cacheFactor);
+    const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
+    stdCell.textContent = fmt(std);
+    batchCell.textContent = fmt(bat);
+  });
+}
+
 function recalcAllRows(state){
   const tbody = document.getElementById('tableBody');
   const modelByKey = new Map();
@@ -267,6 +299,11 @@ async function main(){
     cacheFactor: 0.5,
   };
   window.__state = state;
+  // Surface unexpected JS errors in footer for easier debugging
+  window.addEventListener('error', (e) => {
+    const status = document.getElementById('dataStatus');
+    if(status) status.textContent = `Error: ${e.message}`;
+  });
   const status = document.getElementById('dataStatus');
   try{
     const results = await Promise.allSettled(DATA_FILES.map(fetchJsonAny));
@@ -292,6 +329,8 @@ async function main(){
     const ui = setupUI(state);
     setupSort(state);
     applyFilterSort(state);
+    // Ensure delegated listeners exist and initial compute runs
+    setupDelegatedRowInputs(state);
     ui.populateSelect();
     ui.updateCalc();
   }catch(err){
