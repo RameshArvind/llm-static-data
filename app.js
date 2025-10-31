@@ -2,7 +2,8 @@
 
 const DATA_FILES = [
   'anthropic-pricing.json',
-  'google-pricing.json', // empty by default to avoid duplicates
+  'google-pricing.json',
+  'openai-pricing.json',
 ];
 
 async function fetchJsonAny(path){
