@@ -28,6 +28,22 @@
           <label for="outputTokens">Output token count</label>
           <input id="outputTokens" type="number" min="0" step="1" value="0" />
         </div>
+        <div class="control">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                <input type="radio" name="rateType" id="rateTypeRPM" value="RPM" checked />
+                <span>RPM</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                <input type="radio" name="rateType" id="rateTypeRPD" value="RPD" />
+                <span>RPD</span>
+              </label>
+            </div>
+            <label for="rateValue" style="margin-left: 8px;">Rate</label>
+            <input id="rateValue" type="number" min="0" step="0.01" value="0" />
+          </div>
+        </div>
       </section>
 
       
@@ -47,6 +63,8 @@
                 <th data-sort="availability">Availability</th>
                 <th data-sort="std_cost">Cost (Std)</th>
                 <th class="batch-col" data-sort="batch_cost">Cost (Batch)</th>
+                <th data-sort="std_monthly">Monthly (Std)</th>
+                <th class="batch-col" data-sort="batch_monthly">Monthly (Batch)</th>
               </tr>
             </thead>
             <tbody id="tableBody"></tbody>
