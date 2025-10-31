@@ -13,10 +13,25 @@ async function fetchJsonAny(path){
   try { return JSON.parse(text); } catch(e){ throw new Error(`Invalid JSON in ${path}`); }
 }
 
+function isAudioOrEmbeddingOnly(rec){
+  const modelId = (rec.model_id || '').toLowerCase();
+  const modelName = (rec.model_name || '').toLowerCase();
+  // Check for audio-only models
+  if(modelId.includes('audio') || modelName.includes('audio')){
+    return true;
+  }
+  // Check for embedding-only models
+  if(modelId.includes('embedding') || modelName.includes('embedding')){
+    return true;
+  }
+  return false;
+}
+
 function normalize(rec){
   const std = (rec.pricing && rec.pricing.standard) || {};
   const batch = (rec.pricing && rec.pricing.batch) || {};
   const val = p => (p && typeof p.price_per_million_tokens === 'number') ? p.price_per_million_tokens : null;
+  const isFiltered = isAudioOrEmbeddingOnly(rec);
   return {
     provider: rec.provider || 'Unknown',
     model_id: rec.model_id || '',
@@ -28,6 +43,7 @@ function normalize(rec){
     batch_input: val(batch.input),
     batch_output: val(batch.output),
     currency: (std.input && std.input.currency) || (std.output && std.output.currency) || 'USD',
+    is_filtered: isFiltered,
     raw: rec,
   };
 }
@@ -44,8 +60,15 @@ function fmtContext(n){
 }
 
 function calcCost(tokensIn, tokensOut, m, useBatch){
-  const inPrice = useBatch ? m.batch_input : m.input;
-  const outPrice = useBatch ? m.batch_output : m.output;
+  let inPrice, outPrice;
+  if(useBatch){
+    // If batch pricing is not available, fallback to standard pricing
+    inPrice = m.batch_input != null ? m.batch_input : m.input;
+    outPrice = m.batch_output != null ? m.batch_output : m.output;
+  } else {
+    inPrice = m.input;
+    outPrice = m.output;
+  }
   if(inPrice == null && outPrice == null) return null;
   const pin = inPrice ? (tokensIn/1e6) * inPrice : 0;
   const pout = outPrice ? (tokensOut/1e6) * outPrice : 0;
@@ -53,8 +76,15 @@ function calcCost(tokensIn, tokensOut, m, useBatch){
 }
 
 function calcCostWithCached(tokens, m, useBatch, cacheFactor){
-  const inPrice = useBatch ? m.batch_input : m.input;
-  const outPrice = useBatch ? m.batch_output : m.output;
+  let inPrice, outPrice;
+  if(useBatch){
+    // If batch pricing is not available, fallback to standard pricing
+    inPrice = m.batch_input != null ? m.batch_input : m.input;
+    outPrice = m.batch_output != null ? m.batch_output : m.output;
+  } else {
+    inPrice = m.input;
+    outPrice = m.output;
+  }
   if(inPrice == null && outPrice == null) return null;
   const pin = inPrice ? (tokens.in/1e6) * inPrice : 0;
   const pcached = inPrice ? (tokens.cached/1e6) * inPrice * (cacheFactor ?? 0.5) : 0;
@@ -103,7 +133,8 @@ function applyFilterSort(state){
     console.error('applyFilterSort: invalid state');
     return;
   }
-  let rows = state.data;
+  // Filter out audio/embedding-only models
+  let rows = state.data.filter(m => !m.is_filtered);
   const key = state.sort.key;
   if(key){
     const dir = state.sort.dir;
