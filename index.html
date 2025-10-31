@@ -29,19 +29,19 @@
           <input id="outputTokens" type="number" min="0" step="1" value="0" />
         </div>
         <div class="control">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                <input type="radio" name="rateType" id="rateTypeRPM" value="RPM" checked />
-                <span>RPM</span>
-              </label>
-              <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
-                <input type="radio" name="rateType" id="rateTypeRPD" value="RPD" />
-                <span>RPD</span>
-              </label>
-            </div>
-            <label for="rateValue" style="margin-left: 8px;">Rate</label>
-            <input id="rateValue" type="number" min="0" step="0.01" value="0" />
+          <label for="rateValue">RPD (Requests Per Day)</label>
+          <input id="rateValue" type="number" min="0" step="0.01" value="0" />
+        </div>
+        <div class="control">
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+              <input type="radio" name="pricingType" id="pricingTypeStd" value="std" checked />
+              <span>Standard</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+              <input type="radio" name="pricingType" id="pricingTypeBatch" value="batch" />
+              <span>Batch</span>
+            </label>
           </div>
         </div>
       </section>
@@ -55,16 +55,12 @@
               <tr>
                 <th data-sort="provider">Provider</th>
                 <th data-sort="model_name">Model</th>
-                <th data-sort="input">Input $/M</th>
-                <th data-sort="output">Output $/M</th>
-                <th class="batch-col" data-sort="batch_input">Batch Input $/M</th>
-                <th class="batch-col" data-sort="batch_output">Batch Output $/M</th>
+                <th class="pricing-input-col" data-sort="input">Input $/M</th>
+                <th class="pricing-output-col" data-sort="output">Output $/M</th>
                 <th data-sort="context_length">Context</th>
                 <th data-sort="availability">Availability</th>
-                <th data-sort="std_cost">Cost (Std)</th>
-                <th class="batch-col" data-sort="batch_cost">Cost (Batch)</th>
-                <th data-sort="std_monthly">Monthly (Std)</th>
-                <th class="batch-col" data-sort="batch_monthly">Monthly (Batch)</th>
+                <th data-sort="cost">Cost</th>
+                <th data-sort="monthly">Monthly</th>
               </tr>
             </thead>
             <tbody id="tableBody"></tbody>

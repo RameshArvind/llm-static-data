@@ -92,13 +92,9 @@ function calcCostWithCached(tokens, m, useBatch, cacheFactor){
   return pin + pcached + pout;
 }
 
-function calcMonthlyRequests(rateValue, rateType){
+function calcMonthlyRequests(rateValue){
   if(!rateValue || rateValue <= 0) return 0;
-  if(rateType === 'RPM'){
-    return rateValue * 60 * 24 * 30; // RPM * 60 minutes * 24 hours * 30 days
-  } else { // RPD
-    return rateValue * 30; // RPD * 30 days
-  }
+  return rateValue * 30; // RPD * 30 days
 }
 
 function renderRows(rows){
@@ -109,29 +105,26 @@ function renderRows(rows){
   const state = window.__state;
   if(!state) return;
   const tokens = state.globalTokens || { in: 0, cached: 0, out: 0 };
-  const monthlyRequests = calcMonthlyRequests(state.rateValue || 0, state.rateType || 'RPM');
+  const useBatch = state.useBatch || false;
+  const monthlyRequests = calcMonthlyRequests(state.rateValue || 0);
   for(const r of rows){
     const tr = document.createElement('tr');
     const key = `${r.provider}::${r.model_id || r.model_name}`;
     tr.dataset.key = key;
-    const std = calcCostWithCached(tokens, r, false, state.cacheFactor);
-    const bat = calcCostWithCached(tokens, r, true, state.cacheFactor);
-    const stdMonthly = std != null ? std * monthlyRequests : null;
-    const batMonthly = bat != null ? bat * monthlyRequests : null;
+    const cost = calcCostWithCached(tokens, r, useBatch, state.cacheFactor);
+    const monthly = cost != null ? cost * monthlyRequests : null;
     const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
+    const inputPrice = useBatch ? (r.batch_input != null ? r.batch_input : r.input) : r.input;
+    const outputPrice = useBatch ? (r.batch_output != null ? r.batch_output : r.output) : r.output;
     tr.innerHTML = `
       <td>${r.provider}</td>
       <td>${r.model_name}</td>
-      <td class="price">${fmtPrice(r.input)}</td>
-      <td class="price">${fmtPrice(r.output)}</td>
-      <td class="price batch-col">${fmtPrice(r.batch_input)}</td>
-      <td class="price batch-col">${fmtPrice(r.batch_output)}</td>
+      <td class="price pricing-input-col">${fmtPrice(inputPrice)}</td>
+      <td class="price pricing-output-col">${fmtPrice(outputPrice)}</td>
       <td>${fmtContext(r.context_length)}</td>
       <td><span class="avail ${r.availability==='production'?'prod':''}">${r.availability}</span></td>
-      <td class="cost std-cost">${fmt(std)}</td>
-      <td class="cost batch-cost batch-col">${fmt(bat)}</td>
-      <td class="cost std-monthly">${fmt(stdMonthly)}</td>
-      <td class="cost batch-monthly batch-col">${fmt(batMonthly)}</td>
+      <td class="cost">${fmt(cost)}</td>
+      <td class="cost monthly-cost">${fmt(monthly)}</td>
     `;
     frag.appendChild(tr);
   }
@@ -152,27 +145,38 @@ function applyFilterSort(state){
   const key = state.sort.key;
   if(key){
     const dir = state.sort.dir;
-    const getCost = (m, batch) => {
+    const useBatch = state.useBatch || false;
+    const getCost = (m) => {
       const tokens = state.globalTokens || {in:0, cached:0, out:0};
-      return calcCostWithCached(tokens, m, batch, state.cacheFactor) ?? Number.POSITIVE_INFINITY;
+      return calcCostWithCached(tokens, m, useBatch, state.cacheFactor) ?? Number.POSITIVE_INFINITY;
     };
-    const getMonthlyCost = (m, batch) => {
-      const cost = getCost(m, batch);
-      const monthlyRequests = calcMonthlyRequests(state.rateValue || 0, state.rateType || 'RPM');
+    const getMonthlyCost = (m) => {
+      const cost = getCost(m);
+      const monthlyRequests = calcMonthlyRequests(state.rateValue || 0);
       return cost !== Number.POSITIVE_INFINITY ? cost * monthlyRequests : Number.POSITIVE_INFINITY;
     };
     const cmp = (a,b) => {
-      if(key === 'std_cost'){
-        return getCost(a,false) - getCost(b,false);
+      if(key === 'cost'){
+        return getCost(a) - getCost(b);
       }
-      if(key === 'batch_cost'){
-        return getCost(a,true) - getCost(b,true);
+      if(key === 'monthly'){
+        return getMonthlyCost(a) - getMonthlyCost(b);
       }
-      if(key === 'std_monthly'){
-        return getMonthlyCost(a,false) - getMonthlyCost(b,false);
+      if(key === 'input'){
+        const aVal = useBatch ? (a.batch_input != null ? a.batch_input : a.input) : a.input;
+        const bVal = useBatch ? (b.batch_input != null ? b.batch_input : b.input) : b.input;
+        if(aVal == null && bVal == null) return 0;
+        if(aVal == null) return 1;
+        if(bVal == null) return -1;
+        return aVal - bVal;
       }
-      if(key === 'batch_monthly'){
-        return getMonthlyCost(a,true) - getMonthlyCost(b,true);
+      if(key === 'output'){
+        const aVal = useBatch ? (a.batch_output != null ? a.batch_output : a.output) : a.output;
+        const bVal = useBatch ? (b.batch_output != null ? b.batch_output : b.output) : b.output;
+        if(aVal == null && bVal == null) return 0;
+        if(aVal == null) return 1;
+        if(bVal == null) return -1;
+        return aVal - bVal;
       }
       const av = a[key];
       const bv = b[key];
@@ -209,11 +213,11 @@ function setupUI(state){
   const cachedTokensEl = document.getElementById('cachedTokens');
   const outputTokensEl = document.getElementById('outputTokens');
   const rateValueEl = document.getElementById('rateValue');
-  const rateTypeRPMEl = document.getElementById('rateTypeRPM');
-  const rateTypeRPDEll = document.getElementById('rateTypeRPD');
+  const pricingTypeStdEl = document.getElementById('pricingTypeStd');
+  const pricingTypeBatchEl = document.getElementById('pricingTypeBatch');
   const table = document.getElementById('priceTable');
 
-  if(!inputTokensEl || !cachedTokensEl || !outputTokensEl || !rateValueEl || !rateTypeRPMEl || !rateTypeRPDEll) {
+  if(!inputTokensEl || !cachedTokensEl || !outputTokensEl || !rateValueEl || !pricingTypeStdEl || !pricingTypeBatchEl) {
     console.error('Input elements not found');
     return {};
   }
@@ -231,8 +235,13 @@ function setupUI(state){
   const updateRate = () => {
     if(!state) return;
     state.rateValue = Number(rateValueEl.value || 0);
-    state.rateType = rateTypeRPMEl.checked ? 'RPM' : 'RPD';
     recalcAllRows(state);
+  };
+
+  const updatePricingType = () => {
+    if(!state) return;
+    state.useBatch = pricingTypeBatchEl.checked;
+    applyFilterSort(state);
   };
 
   inputTokensEl.addEventListener('input', updateGlobalTokens);
@@ -243,8 +252,8 @@ function setupUI(state){
   outputTokensEl.addEventListener('change', updateGlobalTokens);
   rateValueEl.addEventListener('input', updateRate);
   rateValueEl.addEventListener('change', updateRate);
-  rateTypeRPMEl.addEventListener('change', updateRate);
-  rateTypeRPDEll.addEventListener('change', updateRate);
+  pricingTypeStdEl.addEventListener('change', updatePricingType);
+  pricingTypeBatchEl.addEventListener('change', updatePricingType);
 
   return {};
 }
@@ -259,25 +268,30 @@ function recalcAllRows(state){
     modelByKey.set(key, m);
   }
   const tokens = state.globalTokens || { in: 0, cached: 0, out: 0 };
-  const monthlyRequests = calcMonthlyRequests(state.rateValue || 0, state.rateType || 'RPM');
+  const useBatch = state.useBatch || false;
+  const monthlyRequests = calcMonthlyRequests(state.rateValue || 0);
   tbody.querySelectorAll('tr').forEach(tr => {
     const key = tr.dataset.key;
     const m = modelByKey.get(key);
     if(!m) return;
-    const stdCell = tr.querySelector('.std-cost');
-    const batchCell = tr.querySelector('.batch-cost');
-    const stdMonthlyCell = tr.querySelector('.std-monthly');
-    const batchMonthlyCell = tr.querySelector('.batch-monthly');
-    if(!stdCell || !batchCell || !stdMonthlyCell || !batchMonthlyCell) return;
-    const std = calcCostWithCached(tokens, m, false, state.cacheFactor);
-    const bat = calcCostWithCached(tokens, m, true, state.cacheFactor);
-    const stdMonthly = std != null ? std * monthlyRequests : null;
-    const batMonthly = bat != null ? bat * monthlyRequests : null;
+    const costCell = tr.querySelector('.cost:not(.monthly-cost)');
+    const monthlyCell = tr.querySelector('.monthly-cost');
+    const inputPriceCell = tr.querySelector('.pricing-input-col');
+    const outputPriceCell = tr.querySelector('.pricing-output-col');
+    if(!costCell || !monthlyCell) return;
+    const cost = calcCostWithCached(tokens, m, useBatch, state.cacheFactor);
+    const monthly = cost != null ? cost * monthlyRequests : null;
     const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
-    stdCell.textContent = fmt(std);
-    batchCell.textContent = fmt(bat);
-    stdMonthlyCell.textContent = fmt(stdMonthly);
-    batchMonthlyCell.textContent = fmt(batMonthly);
+    costCell.textContent = fmt(cost);
+    monthlyCell.textContent = fmt(monthly);
+    if(inputPriceCell){
+      const inputPrice = useBatch ? (m.batch_input != null ? m.batch_input : m.input) : m.input;
+      inputPriceCell.textContent = fmtPrice(inputPrice);
+    }
+    if(outputPriceCell){
+      const outputPrice = useBatch ? (m.batch_output != null ? m.batch_output : m.output) : m.output;
+      outputPriceCell.textContent = fmtPrice(outputPrice);
+    }
   });
 }
 
@@ -316,9 +330,7 @@ async function main(){
 
     const table = document.getElementById('priceTable');
     if(table) {
-      // default hide batch if none of the rows have it
-      const anyBatch = deduped.some(d => d.batch_input != null || d.batch_output != null);
-      table.classList.toggle('hide-batch', !anyBatch);
+      // Note: batch columns are now controlled by the pricing type toggle
     }
 
     setupUI(state);
