@@ -14,6 +14,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 .control{display:flex;align-items:center;gap:8px}
 .control label{font-size:14px;color:var(--muted)}
 input[type="number"]{padding:8px 10px;background:var(--panel);border:1px solid var(--border);color:var(--text);border-radius:8px;min-width:120px}
+input[type="radio"]{width:16px;height:16px;cursor:pointer;accent-color:var(--accent)}
 button{padding:8px 12px;background:var(--panel);border:1px solid var(--border);color:var(--text);border-radius:8px;cursor:pointer}
 button:hover{border-color:var(--accent)}
 .calc{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin:0 0 16px}
