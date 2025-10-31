@@ -63,9 +63,11 @@ function calcCostWithCached(tokens, m, useBatch, cacheFactor){
 
 function renderRows(rows){
   const tbody = document.getElementById('tableBody');
+  if(!tbody) return;
   tbody.innerHTML = '';
   const frag = document.createDocumentFragment();
   const state = window.__state;
+  if(!state) return;
   const tokens = state.globalTokens || { in: 0, cached: 0, out: 0 };
   for(const r of rows){
     const tr = document.createElement('tr');
@@ -89,10 +91,17 @@ function renderRows(rows){
     frag.appendChild(tr);
   }
   tbody.appendChild(frag);
-  document.getElementById('rowCount').textContent = `${rows.length} model${rows.length===1?'':'s'}`;
+  const rowCountEl = document.getElementById('rowCount');
+  if(rowCountEl) {
+    rowCountEl.textContent = `${rows.length} model${rows.length===1?'':'s'}`;
+  }
 }
 
 function applyFilterSort(state){
+  if(!state || !state.data) {
+    console.error('applyFilterSort: invalid state');
+    return;
+  }
   let rows = state.data;
   const key = state.sort.key;
   if(key){
@@ -144,7 +153,13 @@ function setupUI(state){
   const outputTokensEl = document.getElementById('outputTokens');
   const table = document.getElementById('priceTable');
 
+  if(!inputTokensEl || !cachedTokensEl || !outputTokensEl) {
+    console.error('Input elements not found');
+    return {};
+  }
+
   const updateGlobalTokens = () => {
+    if(!state) return;
     state.globalTokens = {
       in: Number(inputTokensEl.value || 0),
       cached: Number(cachedTokensEl.value || 0),
@@ -154,8 +169,11 @@ function setupUI(state){
   };
 
   inputTokensEl.addEventListener('input', updateGlobalTokens);
+  inputTokensEl.addEventListener('change', updateGlobalTokens);
   cachedTokensEl.addEventListener('input', updateGlobalTokens);
+  cachedTokensEl.addEventListener('change', updateGlobalTokens);
   outputTokensEl.addEventListener('input', updateGlobalTokens);
+  outputTokensEl.addEventListener('change', updateGlobalTokens);
 
   return {};
 }
@@ -163,6 +181,7 @@ function setupUI(state){
 
 function recalcAllRows(state){
   const tbody = document.getElementById('tableBody');
+  if(!tbody || !state || !state.data) return;
   const modelByKey = new Map();
   for(const m of state.data){
     const key = `${m.provider}::${m.model_id || m.model_name}`;
@@ -175,6 +194,7 @@ function recalcAllRows(state){
     if(!m) return;
     const stdCell = tr.querySelector('.std-cost');
     const batchCell = tr.querySelector('.batch-cost');
+    if(!stdCell || !batchCell) return;
     const std = calcCostWithCached(tokens, m, false, state.cacheFactor);
     const bat = calcCostWithCached(tokens, m, true, state.cacheFactor);
     const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
@@ -195,6 +215,7 @@ async function main(){
   window.addEventListener('error', (e) => {
     const status = document.getElementById('dataStatus');
     if(status) status.textContent = `Error: ${e.message}`;
+    console.error('Global error:', e);
   });
   const status = document.getElementById('dataStatus');
   try{
@@ -211,20 +232,27 @@ async function main(){
       deduped.push(normalize(rec));
     }
     state.data = deduped;
-    status.textContent = `Loaded ${deduped.length} models`;
+    if(status) status.textContent = `Loaded ${deduped.length} models`;
 
     const table = document.getElementById('priceTable');
-    // default hide batch if none of the rows have it
-    const anyBatch = deduped.some(d => d.batch_input != null || d.batch_output != null);
-    table.classList.toggle('hide-batch', !anyBatch);
+    if(table) {
+      // default hide batch if none of the rows have it
+      const anyBatch = deduped.some(d => d.batch_input != null || d.batch_output != null);
+      table.classList.toggle('hide-batch', !anyBatch);
+    }
 
     setupUI(state);
     setupSort(state);
     applyFilterSort(state);
   }catch(err){
     console.error(err);
-    status.textContent = `Failed to load data: ${err.message}`;
+    if(status) status.textContent = `Failed to load data: ${err.message}`;
   }
 }
 
-main();
+// Ensure DOM is ready before running
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', main);
+} else {
+  main();
+}
