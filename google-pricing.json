@@ -1,1 +1,192 @@
-[]
+[
+  {
+    "provider": "Google",
+    "model_id": "gemini-2.5-flash",
+    "model_name": "Gemini 2.5 Flash",
+    "context_length": 1000000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.075,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 0.30,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  },
+  {
+    "provider": "Google",
+    "model_id": "gemini-2.5-flash-8b",
+    "model_name": "Gemini 2.5 Flash 8B",
+    "context_length": 1000000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.0375,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  },
+  {
+    "provider": "Google",
+    "model_id": "gemini-2.5-pro",
+    "model_name": "Gemini 2.5 Pro",
+    "context_length": 2000000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 1.25,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 5.0,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  },
+  {
+    "provider": "Google",
+    "model_id": "gemini-2.5-pro-latest",
+    "model_name": "Gemini 2.5 Pro (Latest)",
+    "context_length": 2000000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 1.25,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 5.0,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  },
+  {
+    "provider": "Google",
+    "model_id": "gemini-2.0-flash",
+    "model_name": "Gemini 2.0 Flash",
+    "context_length": 1000000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.075,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 0.30,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  },
+  {
+    "provider": "Google",
+    "model_id": "gemini-2.0-flash-exp",
+    "model_name": "Gemini 2.0 Flash (Experimental)",
+    "context_length": 1000000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.075,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 0.30,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  },
+  {
+    "provider": "Google",
+    "model_id": "gemini-2.0-flash-thinking-exp",
+    "model_name": "Gemini 2.0 Flash Thinking (Experimental)",
+    "context_length": 1000000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.075,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 0.30,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  },
+  {
+    "provider": "Google",
+    "model_id": "gemini-1.5-pro",
+    "model_name": "Gemini 1.5 Pro",
+    "context_length": 2000000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 1.25,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 5.0,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  },
+  {
+    "provider": "Google",
+    "model_id": "gemini-1.5-flash",
+    "model_name": "Gemini 1.5 Flash",
+    "context_length": 1000000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.075,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 0.30,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  },
+  {
+    "provider": "Google",
+    "model_id": "gemini-1.5-flash-8b",
+    "model_name": "Gemini 1.5 Flash 8B",
+    "context_length": 1000000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.0375,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  }
+]
