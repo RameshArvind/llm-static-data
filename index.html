@@ -17,20 +17,16 @@
     <main class="container">
       <section class="controls">
         <div class="control">
-          <label for="search">Search</label>
-          <input id="search" type="search" placeholder="Filter by provider or model" />
+          <label for="inputTokens">Input token count</label>
+          <input id="inputTokens" type="number" min="0" step="1" value="0" />
         </div>
         <div class="control">
-          <label for="showBatch">
-            <input id="showBatch" type="checkbox" checked /> Show batch pricing
-          </label>
+          <label for="cachedTokens">Cached input token count</label>
+          <input id="cachedTokens" type="number" min="0" step="1" value="0" />
         </div>
         <div class="control">
-          <label for="cacheFactor">Cached input factor</label>
-          <input id="cacheFactor" type="number" min="0" max="1" step="0.05" value="0.50" />
-        </div>
-        <div class="control">
-          <button id="reset" type="button">Reset</button>
+          <label for="outputTokens">Output token count</label>
+          <input id="outputTokens" type="number" min="0" step="1" value="0" />
         </div>
       </section>
 
@@ -49,9 +45,6 @@
                 <th class="batch-col" data-sort="batch_output">Batch Output $/M</th>
                 <th data-sort="context_length">Context</th>
                 <th data-sort="availability">Availability</th>
-                <th>In Tokens</th>
-                <th>Cached Tokens</th>
-                <th>Out Tokens</th>
                 <th data-sort="std_cost">Cost (Std)</th>
                 <th class="batch-col" data-sort="batch_cost">Cost (Batch)</th>
               </tr>

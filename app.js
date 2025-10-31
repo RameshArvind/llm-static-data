@@ -65,11 +65,15 @@ function renderRows(rows){
   const tbody = document.getElementById('tableBody');
   tbody.innerHTML = '';
   const frag = document.createDocumentFragment();
+  const state = window.__state;
+  const tokens = state.globalTokens || { in: 0, cached: 0, out: 0 };
   for(const r of rows){
     const tr = document.createElement('tr');
     const key = `${r.provider}::${r.model_id || r.model_name}`;
     tr.dataset.key = key;
-    const tokens = window.__state && window.__state.inputs[key] || { in: 0, cached: 0, out: 0 };
+    const std = calcCostWithCached(tokens, r, false, state.cacheFactor);
+    const bat = calcCostWithCached(tokens, r, true, state.cacheFactor);
+    const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
     tr.innerHTML = `
       <td>${r.provider}</td>
       <td>${r.model_name}</td>
@@ -79,32 +83,23 @@ function renderRows(rows){
       <td class="price batch-col">${fmtPrice(r.batch_output)}</td>
       <td>${fmtContext(r.context_length)}</td>
       <td><span class="avail ${r.availability==='production'?'prod':''}">${r.availability}</span></td>
-      <td><input type="number" min="0" step="1" class="tok tok-in" value="${tokens.in}"></td>
-      <td><input type="number" min="0" step="1" class="tok tok-cached" value="${tokens.cached}"></td>
-      <td><input type="number" min="0" step="1" class="tok tok-out" value="${tokens.out}"></td>
-      <td class="cost std-cost">—</td>
-      <td class="cost batch-cost batch-col">—</td>
+      <td class="cost std-cost">${fmt(std)}</td>
+      <td class="cost batch-cost batch-col">${fmt(bat)}</td>
     `;
     frag.appendChild(tr);
   }
   tbody.appendChild(frag);
   document.getElementById('rowCount').textContent = `${rows.length} model${rows.length===1?'':'s'}`;
-  wireRowInputs();
 }
 
 function applyFilterSort(state){
-  const q = state.query.toLowerCase().trim();
   let rows = state.data;
-  if(q){
-    rows = rows.filter(r => `${r.provider} ${r.model_name} ${r.model_id}`.toLowerCase().includes(q));
-  }
   const key = state.sort.key;
   if(key){
     const dir = state.sort.dir;
     const getCost = (m, batch) => {
-      const k = `${m.provider}::${m.model_id || m.model_name}`;
-      const t = state.inputs[k] || {in:0, cached:0, out:0};
-      return calcCostWithCached(t, m, batch, state.cacheFactor) ?? Number.POSITIVE_INFINITY;
+      const tokens = state.globalTokens || {in:0, cached:0, out:0};
+      return calcCostWithCached(tokens, m, batch, state.cacheFactor) ?? Number.POSITIVE_INFINITY;
     };
     const cmp = (a,b) => {
       if(key === 'std_cost'){
@@ -144,99 +139,27 @@ function setupSort(state){
 }
 
 function setupUI(state){
-  const search = document.getElementById('search');
-  const reset = document.getElementById('reset');
-  const showBatch = document.getElementById('showBatch');
+  const inputTokensEl = document.getElementById('inputTokens');
+  const cachedTokensEl = document.getElementById('cachedTokens');
+  const outputTokensEl = document.getElementById('outputTokens');
   const table = document.getElementById('priceTable');
-  const cacheFactorEl = document.getElementById('cacheFactor');
 
-  search.addEventListener('input', () => { state.query = search.value; applyFilterSort(state); });
-  reset.addEventListener('click', () => { search.value=''; state.query=''; applyFilterSort(state); });
-  showBatch.addEventListener('change', () => {
-    table.classList.toggle('hide-batch', !showBatch.checked);
-  });
-  cacheFactorEl.addEventListener('input', () => {
-    const v = Number(cacheFactorEl.value);
-    state.cacheFactor = isFinite(v) ? Math.max(0, Math.min(1, v)) : 0.5;
-    cacheFactorEl.value = String(state.cacheFactor.toFixed(2));
+  const updateGlobalTokens = () => {
+    state.globalTokens = {
+      in: Number(inputTokensEl.value || 0),
+      cached: Number(cachedTokensEl.value || 0),
+      out: Number(outputTokensEl.value || 0),
+    };
     recalcAllRows(state);
-  });
+  };
+
+  inputTokensEl.addEventListener('input', updateGlobalTokens);
+  cachedTokensEl.addEventListener('input', updateGlobalTokens);
+  outputTokensEl.addEventListener('input', updateGlobalTokens);
 
   return {};
 }
 
-function wireRowInputs(){
-  const tbody = document.getElementById('tableBody');
-  const state = window.__state;
-  const updateRow = (tr, model) => {
-    const key = tr.dataset.key;
-    const inEl = tr.querySelector('.tok-in');
-    const cachedEl = tr.querySelector('.tok-cached');
-    const outEl = tr.querySelector('.tok-out');
-    const stdCell = tr.querySelector('.std-cost');
-    const batchCell = tr.querySelector('.batch-cost');
-    const tokens = {
-      in: Number(inEl.value || 0),
-      cached: Number(cachedEl.value || 0),
-      out: Number(outEl.value || 0),
-    };
-    state.inputs[key] = tokens;
-    const std = calcCostWithCached(tokens, model, false, state.cacheFactor);
-    const bat = calcCostWithCached(tokens, model, true, state.cacheFactor);
-    const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
-    stdCell.textContent = fmt(std);
-    batchCell.textContent = fmt(bat);
-  };
-
-  // Build a quick lookup from key -> model
-  const modelByKey = new Map();
-  for(const m of state.data){
-    const key = `${m.provider}::${m.model_id || m.model_name}`;
-    modelByKey.set(key, m);
-  }
-
-  tbody.querySelectorAll('tr').forEach(tr => {
-    const key = tr.dataset.key;
-    const model = modelByKey.get(key);
-    if(!model) return;
-    const inputs = tr.querySelectorAll('input.tok');
-    inputs.forEach(inp => inp.addEventListener('input', () => updateRow(tr, model)));
-    // initial compute
-    updateRow(tr, model);
-  });
-}
-
-function setupDelegatedRowInputs(state){
-  const tbody = document.getElementById('tableBody');
-  if(tbody.dataset.delegated === '1') return;
-  tbody.dataset.delegated = '1';
-  tbody.addEventListener('input', (e) => {
-    const target = e.target;
-    if(!target.classList || !target.classList.contains('tok')) return;
-    const tr = target.closest('tr');
-    const key = tr?.dataset?.key;
-    if(!key) return;
-    const m = window.__state.data.find(x => `${x.provider}::${x.model_id || x.model_name}` === key);
-    if(!m) return;
-    // Reuse the same logic as recalcAllRows but for a single row
-    const inEl = tr.querySelector('.tok-in');
-    const cachedEl = tr.querySelector('.tok-cached');
-    const outEl = tr.querySelector('.tok-out');
-    const stdCell = tr.querySelector('.std-cost');
-    const batchCell = tr.querySelector('.batch-cost');
-    const tokens = {
-      in: Number(inEl.value || 0),
-      cached: Number(cachedEl.value || 0),
-      out: Number(outEl.value || 0),
-    };
-    window.__state.inputs[key] = tokens;
-    const std = calcCostWithCached(tokens, m, false, window.__state.cacheFactor);
-    const bat = calcCostWithCached(tokens, m, true, window.__state.cacheFactor);
-    const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
-    stdCell.textContent = fmt(std);
-    batchCell.textContent = fmt(bat);
-  });
-}
 
 function recalcAllRows(state){
   const tbody = document.getElementById('tableBody');
@@ -245,20 +168,13 @@ function recalcAllRows(state){
     const key = `${m.provider}::${m.model_id || m.model_name}`;
     modelByKey.set(key, m);
   }
+  const tokens = state.globalTokens || { in: 0, cached: 0, out: 0 };
   tbody.querySelectorAll('tr').forEach(tr => {
     const key = tr.dataset.key;
     const m = modelByKey.get(key);
     if(!m) return;
-    const inEl = tr.querySelector('.tok-in');
-    const cachedEl = tr.querySelector('.tok-cached');
-    const outEl = tr.querySelector('.tok-out');
     const stdCell = tr.querySelector('.std-cost');
     const batchCell = tr.querySelector('.batch-cost');
-    const tokens = {
-      in: Number(inEl.value || 0),
-      cached: Number(cachedEl.value || 0),
-      out: Number(outEl.value || 0),
-    };
     const std = calcCostWithCached(tokens, m, false, state.cacheFactor);
     const bat = calcCostWithCached(tokens, m, true, state.cacheFactor);
     const fmt = v => v==null ? '—' : `$${v.toFixed(v>=10?2:3)}`;
@@ -270,9 +186,8 @@ function recalcAllRows(state){
 async function main(){
   const state = {
     data: [],
-    query: '',
     sort: { key: 'provider', dir: 'asc' },
-    inputs: {}, // key -> {in, cached, out}
+    globalTokens: { in: 0, cached: 0, out: 0 },
     cacheFactor: 0.5,
   };
   window.__state = state;
@@ -306,8 +221,6 @@ async function main(){
     setupUI(state);
     setupSort(state);
     applyFilterSort(state);
-    // Ensure delegated listeners exist and initial compute runs
-    setupDelegatedRowInputs(state);
   }catch(err){
     console.error(err);
     status.textContent = `Failed to load data: ${err.message}`;
