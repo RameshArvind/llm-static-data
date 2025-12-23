@@ -7,7 +7,7 @@ Files:
 - `styles.css` – minimal styling
 - `app.js` – loads and renders pricing data
 - `anthropic-pricing.json` – sample pricing data
-- `bedrock-pricing.json` – Amazon Bedrock model list (from AWS pricing page)
+- `bedrock-pricing.json` – Amazon Bedrock models (with token pricing where available)
 - `google-pricing.json` – sample pricing data (empty by default)
 - `openai-pricing.json` – sample pricing data
 
@@ -25,3 +25,4 @@ Notes:
 - Table columns include Standard and Batch prices when available.
 - Calculator uses prices per 1M tokens; enter your input/output token counts to estimate cost.
 - Per-row calculator only: Enter Input, Cached Input, and Output tokens directly in the table to see live Standard and Batch costs per model. Adjust the "Cached input factor" (default 0.50) in the top controls to model provider-specific cache discounts.
+- `bedrock-pricing.json` uses **us-east-1** token pricing from the AWS public pricing feeds (and leaves non-token-priced models blank).

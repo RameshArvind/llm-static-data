@@ -4,7 +4,18 @@
     "model_id": "bedrock-ai21-labs-jamba-1-5-large",
     "model_name": "AI21 Labs: Jamba 1.5 Large",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 2.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 8.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -14,7 +25,18 @@
     "model_id": "bedrock-ai21-labs-jamba-1-5-mini",
     "model_name": "AI21 Labs: Jamba 1.5 Mini",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.4,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -24,7 +46,18 @@
     "model_id": "bedrock-ai21-labs-jamba-instruct",
     "model_name": "AI21 Labs: Jamba-Instruct",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.7,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -34,7 +67,18 @@
     "model_id": "bedrock-ai21-labs-jurassic-2-mid",
     "model_name": "AI21 Labs: Jurassic-2 Mid",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 12.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 12.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -44,7 +88,18 @@
     "model_id": "bedrock-ai21-labs-jurassic-2-ultra",
     "model_name": "AI21 Labs: Jurassic-2 Ultra",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 18.8,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 18.8,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -54,7 +109,30 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-2-lite",
     "model_name": "Amazon Nova: Amazon Nova 2 Lite",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 2.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.375,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -64,7 +142,30 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-2-omni-preview",
     "model_name": "Amazon Nova: Amazon Nova 2 Omni (Preview)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 2.8,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "preview",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -74,7 +175,30 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-2-pro-preview",
     "model_name": "Amazon Nova: Amazon Nova 2 Pro (Preview)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 1.25,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 11.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.6875,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 5.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "preview",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -84,7 +208,30 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-2-sonic",
     "model_name": "Amazon Nova: Amazon Nova 2 Sonic",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 2.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.375,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -94,7 +241,30 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-2-0-lite",
     "model_name": "Amazon Nova: Amazon Nova 2.0 Lite",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 2.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.375,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -114,7 +284,30 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-lite",
     "model_name": "Amazon Nova: Amazon Nova Lite",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.06,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.24,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.03,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.12,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -124,7 +317,30 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-micro",
     "model_name": "Amazon Nova: Amazon Nova Micro",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.035,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.14,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.0175,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.07,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -154,7 +370,30 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-premier",
     "model_name": "Amazon Nova: Amazon Nova Premier",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 2.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 12.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 1.25,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 6.25,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -164,7 +403,30 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-pro",
     "model_name": "Amazon Nova: Amazon Nova Pro",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.8,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 3.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.4,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.6,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -174,7 +436,18 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-pro-w-latency-optimized-inference",
     "model_name": "Amazon Nova: Amazon Nova Pro (w/ latency optimized inference)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 1.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 4.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -194,7 +467,18 @@
     "model_id": "bedrock-amazon-nova-amazon-nova-sonic",
     "model_name": "Amazon Nova: Amazon Nova Sonic",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 3.4,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 13.6,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -204,7 +488,13 @@
     "model_id": "bedrock-amazon-titan-amazon-titan-embeddings",
     "model_name": "Amazon Titan: Amazon Titan Embeddings",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.1,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -264,7 +554,13 @@
     "model_id": "bedrock-amazon-titan-amazon-titan-multimodal-embeddings",
     "model_name": "Amazon Titan: Amazon Titan Multimodal Embeddings",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.1,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -274,7 +570,13 @@
     "model_id": "bedrock-amazon-titan-amazon-titan-text-embeddings",
     "model_name": "Amazon Titan: Amazon Titan Text Embeddings",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.1,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -284,7 +586,20 @@
     "model_id": "bedrock-amazon-titan-amazon-titan-text-embeddings-v2",
     "model_name": "Amazon Titan: Amazon Titan Text Embeddings V2",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.02,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.01,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -294,7 +609,18 @@
     "model_id": "bedrock-amazon-titan-amazon-titan-text-express",
     "model_name": "Amazon Titan: Amazon Titan Text Express",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.6,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -304,7 +630,18 @@
     "model_id": "bedrock-amazon-titan-amazon-titan-text-lite",
     "model_name": "Amazon Titan: Amazon Titan Text Lite",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -314,7 +651,18 @@
     "model_id": "bedrock-amazon-titan-amazon-titan-text-premier",
     "model_name": "Amazon Titan: Amazon Titan Text Premier",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -324,7 +672,13 @@
     "model_id": "bedrock-anthropic-claude-2-0",
     "model_name": "Anthropic: Claude 2.0",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 8.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -334,7 +688,13 @@
     "model_id": "bedrock-anthropic-claude-2-1",
     "model_name": "Anthropic: Claude 2.1",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 8.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -344,7 +704,30 @@
     "model_id": "bedrock-anthropic-claude-3-haiku",
     "model_name": "Anthropic: Claude 3 Haiku",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.25,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.25,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.125,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.625,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -354,7 +737,30 @@
     "model_id": "bedrock-anthropic-claude-3-opus",
     "model_name": "Anthropic: Claude 3 Opus",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 15.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 75.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 7.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 37.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -364,7 +770,30 @@
     "model_id": "bedrock-anthropic-claude-3-sonnet",
     "model_name": "Anthropic: Claude 3 Sonnet",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 3.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 15.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 1.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 7.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -374,7 +803,30 @@
     "model_id": "bedrock-anthropic-claude-3-5-haiku",
     "model_name": "Anthropic: Claude 3.5 Haiku",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.1,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 4.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.4,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 2.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -384,7 +836,30 @@
     "model_id": "bedrock-anthropic-claude-3-5-sonnet",
     "model_name": "Anthropic: Claude 3.5 Sonnet",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 3.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 15.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 1.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 7.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -394,7 +869,30 @@
     "model_id": "bedrock-anthropic-claude-3-5-sonnet-v2",
     "model_name": "Anthropic: Claude 3.5 Sonnet v2",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 3.75,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 15.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 1.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 7.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -404,7 +902,30 @@
     "model_id": "bedrock-anthropic-claude-3-7-sonnet",
     "model_name": "Anthropic: Claude 3.7 Sonnet",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 3.75,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 15.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 1.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 7.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -414,7 +935,30 @@
     "model_id": "bedrock-anthropic-claude-haiku-4-5",
     "model_name": "Anthropic: Claude Haiku 4.5",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 1.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 5.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 2.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -424,7 +968,18 @@
     "model_id": "bedrock-anthropic-claude-instant",
     "model_name": "Anthropic: Claude Instant",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.8,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 2.4,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -434,7 +989,30 @@
     "model_id": "bedrock-anthropic-claude-opus-4",
     "model_name": "Anthropic: Claude Opus 4",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 18.75,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 75.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 7.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 37.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -444,7 +1022,18 @@
     "model_id": "bedrock-anthropic-claude-opus-4-1",
     "model_name": "Anthropic: Claude Opus 4.1",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 1.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 75.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -454,7 +1043,30 @@
     "model_id": "bedrock-anthropic-claude-opus-4-5",
     "model_name": "Anthropic: Claude Opus 4.5",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 27.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 2.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 12.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -464,7 +1076,30 @@
     "model_id": "bedrock-anthropic-claude-sonnet-4",
     "model_name": "Anthropic: Claude Sonnet 4",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 3.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 15.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 1.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 7.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -474,7 +1109,18 @@
     "model_id": "bedrock-anthropic-claude-sonnet-4-long-context",
     "model_name": "Anthropic: Claude Sonnet 4 - Long Context",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 6.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 11.25,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -484,7 +1130,30 @@
     "model_id": "bedrock-anthropic-claude-sonnet-4-5",
     "model_name": "Anthropic: Claude Sonnet 4.5",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 3.75,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 15.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 1.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 7.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -494,7 +1163,30 @@
     "model_id": "bedrock-anthropic-claude-sonnet-4-5-long-context",
     "model_name": "Anthropic: Claude Sonnet 4.5 - Long Context",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 13.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 24.75,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 3.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 12.375,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -514,7 +1206,18 @@
     "model_id": "bedrock-cohere-command-r",
     "model_name": "Cohere: Command R",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -524,7 +1227,18 @@
     "model_id": "bedrock-cohere-command-r-plus",
     "model_name": "Cohere: Command R+",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 3.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 15.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -534,7 +1248,18 @@
     "model_id": "bedrock-cohere-command-light",
     "model_name": "Cohere: Command-Light",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.6,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -544,7 +1269,13 @@
     "model_id": "bedrock-cohere-embed-3-english",
     "model_name": "Cohere: Embed 3 English",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.1,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -554,7 +1285,13 @@
     "model_id": "bedrock-cohere-embed-3-multilingual",
     "model_name": "Cohere: Embed 3 Multilingual",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.1,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -564,7 +1301,13 @@
     "model_id": "bedrock-cohere-embed-4-model",
     "model_name": "Cohere: Embed 4 Model",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.12,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -574,7 +1317,18 @@
     "model_id": "bedrock-deepseek-deepseek-r1",
     "model_name": "DeepSeek: DeepSeek-R1",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 1.35,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 5.4,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -604,7 +1358,30 @@
     "model_id": "bedrock-meta-llama-3-instruct-70b",
     "model_name": "Meta: Llama 3 Instruct (70B)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.72,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.72,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.36,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.36,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -614,7 +1391,18 @@
     "model_id": "bedrock-meta-llama-3-instruct-8b",
     "model_name": "Meta: Llama 3 Instruct (8B)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.6,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -624,7 +1412,19 @@
     "model_id": "bedrock-meta-llama-3-1-instruct-405b",
     "model_name": "Meta: Llama 3.1 Instruct (405B)",
     "pricing": {
-      "standard": {}
+      "standard": {},
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 1.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -634,7 +1434,19 @@
     "model_id": "bedrock-meta-llama-3-1-instruct-405b-w-latency-optimized-inference",
     "model_name": "Meta: Llama 3.1 Instruct (405B) (w/ latency optimized inference)",
     "pricing": {
-      "standard": {}
+      "standard": {},
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 1.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -644,7 +1456,18 @@
     "model_id": "bedrock-meta-llama-3-1-instruct-70b",
     "model_name": "Meta: Llama 3.1 Instruct (70B)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.9,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.9,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -654,7 +1477,18 @@
     "model_id": "bedrock-meta-llama-3-1-instruct-70b-w-latency-optimized-inference",
     "model_name": "Meta: Llama 3.1 Instruct (70B) (w/ latency optimized inference)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.9,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.9,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -664,7 +1498,30 @@
     "model_id": "bedrock-meta-llama-3-1-instruct-8b",
     "model_name": "Meta: Llama 3.1 Instruct (8B)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.22,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.22,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.11,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.11,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -674,7 +1531,18 @@
     "model_id": "bedrock-meta-llama-3-2-instruct-11b",
     "model_name": "Meta: Llama 3.2 Instruct (11B)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.16,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.16,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -684,7 +1552,18 @@
     "model_id": "bedrock-meta-llama-3-2-instruct-1b",
     "model_name": "Meta: Llama 3.2 Instruct (1B)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.1,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.1,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -694,7 +1573,18 @@
     "model_id": "bedrock-meta-llama-3-2-instruct-3b",
     "model_name": "Meta: Llama 3.2 Instruct (3B)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -704,7 +1594,18 @@
     "model_id": "bedrock-meta-llama-3-2-instruct-90b",
     "model_name": "Meta: Llama 3.2 Instruct (90B)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.72,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.72,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -714,7 +1615,30 @@
     "model_id": "bedrock-meta-llama-3-3-instruct-70b",
     "model_name": "Meta: Llama 3.3 Instruct (70B)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.72,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.72,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.36,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.36,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -724,7 +1648,30 @@
     "model_id": "bedrock-meta-llama-4-maverick-17b",
     "model_name": "Meta: Llama 4 Maverick 17B",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.24,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.97,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.12,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.485,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -734,7 +1681,30 @@
     "model_id": "bedrock-meta-llama-4-scout-17b",
     "model_name": "Meta: Llama 4 Scout 17B",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.17,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.66,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.085,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.33,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -744,7 +1714,18 @@
     "model_id": "bedrock-mistral-mistral-7b",
     "model_name": "Mistral: Mistral 7B",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.2,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -754,7 +1735,18 @@
     "model_id": "bedrock-mistral-mistral-large-24-02",
     "model_name": "Mistral: Mistral Large (24.02)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 4.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 12.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -764,7 +1756,18 @@
     "model_id": "bedrock-mistral-mistral-large-2-24-07",
     "model_name": "Mistral: Mistral Large 2 (24.07)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 4.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 12.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -774,7 +1777,30 @@
     "model_id": "bedrock-mistral-mistral-small-24-02",
     "model_name": "Mistral: Mistral Small (24.02)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 1.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 3.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 1.5,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -784,7 +1810,18 @@
     "model_id": "bedrock-mistral-mixtral-8-7b",
     "model_name": "Mistral: Mixtral 8*7B",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.45,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.7,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -794,7 +1831,18 @@
     "model_id": "bedrock-mistral-pixtral-large-25-02",
     "model_name": "Mistral: Pixtral Large (25.02)",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 2.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 6.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -804,7 +1852,30 @@
     "model_id": "bedrock-openai-gpt-oss-120b",
     "model_name": "OpenAI: gpt-oss-120b",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.6,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.075,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -814,7 +1885,30 @@
     "model_id": "bedrock-openai-gpt-oss-20b",
     "model_name": "OpenAI: gpt-oss-20b",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.07,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.035,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -844,7 +1938,30 @@
     "model_id": "bedrock-qwen3-qwen3-32b",
     "model_name": "Qwen3: Qwen3 32B",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.6,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.075,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -854,7 +1971,30 @@
     "model_id": "bedrock-qwen3-qwen3-coder-30b-a3b",
     "model_name": "Qwen3: Qwen3 Coder 30B A3B",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.15,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.6,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 0.075,
+          "currency": "USD",
+          "region": "us-east-1"
+        },
+        "output": {
+          "price_per_million_tokens": 0.3,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -934,7 +2074,13 @@
     "model_id": "bedrock-twelvelabs-pegasus-1-2",
     "model_name": "TwelveLabs: Pegasus 1.2",
     "pricing": {
-      "standard": {}
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 8.0,
+          "currency": "USD",
+          "region": "us-east-1"
+        }
+      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
