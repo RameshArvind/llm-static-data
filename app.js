@@ -2,6 +2,7 @@
 
 const DATA_FILES = [
   'anthropic-pricing.json',
+  'bedrock-pricing.json',
   'google-pricing.json',
   'openai-pricing.json',
 ];
