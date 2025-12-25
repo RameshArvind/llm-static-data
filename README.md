@@ -7,7 +7,9 @@ Files:
 - `styles.css` – minimal styling
 - `app.js` – loads and renders pricing data
 - `anthropic-pricing.json` – sample pricing data
+- `bedrock-pricing.json` – Amazon Bedrock models (with token pricing where available)
 - `google-pricing.json` – sample pricing data (empty by default)
+- `openai-pricing.json` – sample pricing data
 
 Usage (locally):
 - Serve the folder with any static server (or open `index.html` directly). Some browsers restrict `fetch` for `file://`; to avoid this, run a tiny server:
@@ -19,7 +21,8 @@ Deploy on GitHub Pages:
 3. Open the published URL.
 
 Notes:
-- The app reads from `anthropic-pricing.json` and `google-pricing` (treated as JSON). Add more files by editing `DATA_FILES` in `app.js`.
+- The app reads from `anthropic-pricing.json`, `bedrock-pricing.json`, `google-pricing.json`, and `openai-pricing.json`. Add more files by editing `DATA_FILES` in `app.js`.
 - Table columns include Standard and Batch prices when available.
 - Calculator uses prices per 1M tokens; enter your input/output token counts to estimate cost.
 - Per-row calculator only: Enter Input, Cached Input, and Output tokens directly in the table to see live Standard and Batch costs per model. Adjust the "Cached input factor" (default 0.50) in the top controls to model provider-specific cache discounts.
+- `bedrock-pricing.json` uses **us-east-1** token pricing from the AWS public pricing feeds (and leaves non-token-priced models blank).
