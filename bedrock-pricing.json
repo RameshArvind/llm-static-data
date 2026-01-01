@@ -271,16 +271,6 @@
   },
   {
     "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-nova-amazon-nova-canvas",
-    "model_name": "Amazon Nova: Amazon Nova Canvas",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
     "model_id": "bedrock-amazon-nova-amazon-nova-lite",
     "model_name": "Amazon Nova: Amazon Nova Lite",
     "pricing": {
@@ -341,26 +331,6 @@
           "region": "us-east-1"
         }
       }
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-nova-amazon-nova-multimodal-embeddings-batch",
-    "model_name": "Amazon Nova: Amazon Nova Multimodal Embeddings (Batch)",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-nova-amazon-nova-multimodal-embeddings-on-demand",
-    "model_name": "Amazon Nova: Amazon Nova Multimodal Embeddings (On-demand)",
-    "pricing": {
-      "standard": {}
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
@@ -454,16 +424,6 @@
   },
   {
     "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-nova-amazon-nova-reel",
-    "model_name": "Amazon Nova: Amazon Nova Reel",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
     "model_id": "bedrock-amazon-nova-amazon-nova-sonic",
     "model_name": "Amazon Nova: Amazon Nova Sonic",
     "pricing": {
@@ -475,127 +435,6 @@
         },
         "output": {
           "price_per_million_tokens": 13.6,
-          "currency": "USD",
-          "region": "us-east-1"
-        }
-      }
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-titan-amazon-titan-embeddings",
-    "model_name": "Amazon Titan: Amazon Titan Embeddings",
-    "pricing": {
-      "standard": {
-        "input": {
-          "price_per_million_tokens": 0.1,
-          "currency": "USD",
-          "region": "us-east-1"
-        }
-      }
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-titan-amazon-titan-image-generator",
-    "model_name": "Amazon Titan: Amazon Titan Image Generator",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-titan-amazon-titan-image-generator-v1",
-    "model_name": "Amazon Titan: Amazon Titan Image Generator v1",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-titan-amazon-titan-image-generator-v1-custom-models",
-    "model_name": "Amazon Titan: Amazon Titan Image Generator v1 (custom models)",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-titan-amazon-titan-image-generator-v2",
-    "model_name": "Amazon Titan: Amazon Titan Image Generator v2",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-titan-amazon-titan-image-generator-v2-custom-models",
-    "model_name": "Amazon Titan: Amazon Titan Image Generator v2 (custom models)",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-titan-amazon-titan-multimodal-embeddings",
-    "model_name": "Amazon Titan: Amazon Titan Multimodal Embeddings",
-    "pricing": {
-      "standard": {
-        "input": {
-          "price_per_million_tokens": 0.1,
-          "currency": "USD",
-          "region": "us-east-1"
-        }
-      }
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-titan-amazon-titan-text-embeddings",
-    "model_name": "Amazon Titan: Amazon Titan Text Embeddings",
-    "pricing": {
-      "standard": {
-        "input": {
-          "price_per_million_tokens": 0.1,
-          "currency": "USD",
-          "region": "us-east-1"
-        }
-      }
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-amazon-titan-amazon-titan-text-embeddings-v2",
-    "model_name": "Amazon Titan: Amazon Titan Text Embeddings V2",
-    "pricing": {
-      "standard": {
-        "input": {
-          "price_per_million_tokens": 0.02,
-          "currency": "USD",
-          "region": "us-east-1"
-        }
-      },
-      "batch": {
-        "input": {
-          "price_per_million_tokens": 0.01,
           "currency": "USD",
           "region": "us-east-1"
         }
@@ -1266,54 +1105,6 @@
   },
   {
     "provider": "Amazon Bedrock",
-    "model_id": "bedrock-cohere-embed-3-english",
-    "model_name": "Cohere: Embed 3 English",
-    "pricing": {
-      "standard": {
-        "input": {
-          "price_per_million_tokens": 0.1,
-          "currency": "USD",
-          "region": "us-east-1"
-        }
-      }
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-cohere-embed-3-multilingual",
-    "model_name": "Cohere: Embed 3 Multilingual",
-    "pricing": {
-      "standard": {
-        "input": {
-          "price_per_million_tokens": 0.1,
-          "currency": "USD",
-          "region": "us-east-1"
-        }
-      }
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-cohere-embed-4-model",
-    "model_name": "Cohere: Embed 4 Model",
-    "pricing": {
-      "standard": {
-        "input": {
-          "price_per_million_tokens": 0.12,
-          "currency": "USD",
-          "region": "us-east-1"
-        }
-      }
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
     "model_id": "bedrock-deepseek-deepseek-r1",
     "model_name": "DeepSeek: DeepSeek-R1",
     "pricing": {
@@ -1337,16 +1128,6 @@
     "provider": "Amazon Bedrock",
     "model_id": "bedrock-deepseek-deepseek-v3-1",
     "model_name": "DeepSeek: DeepSeek-V3.1",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-luma-ai-luma-ray2",
-    "model_name": "Luma AI: Luma Ray2",
     "pricing": {
       "standard": {}
     },
@@ -1915,16 +1696,6 @@
   },
   {
     "provider": "Amazon Bedrock",
-    "model_id": "bedrock-other-amazon-amazon-rerank-v1-0",
-    "model_name": "Other Amazon: Amazon-rerank-v1.0",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
     "model_id": "bedrock-qwen3-qwen3-235b-a22b-2507",
     "model_name": "Qwen3: Qwen3 235B A22B 2507",
     "pricing": {
@@ -2005,82 +1776,6 @@
     "model_name": "Qwen3: Qwen3 Coder 480B A35B",
     "pricing": {
       "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-stability-ai-model-stable-diffusion-3-large",
-    "model_name": "Stability AI model: Stable Diffusion 3 Large",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-stability-ai-model-stable-diffusion-3-5-large",
-    "model_name": "Stability AI model: Stable Diffusion 3.5 Large",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-stability-ai-model-stable-image-core",
-    "model_name": "Stability AI model: Stable Image Core",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-stability-ai-model-stable-image-ultra",
-    "model_name": "Stability AI model: Stable Image Ultra",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-twelvelabs-marengo-embed-2-7",
-    "model_name": "TwelveLabs: Marengo Embed 2.7",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-twelvelabs-marengo-embed-3-0",
-    "model_name": "TwelveLabs: Marengo Embed 3.0",
-    "pricing": {
-      "standard": {}
-    },
-    "availability": "production",
-    "source": "https://aws.amazon.com/bedrock/pricing/"
-  },
-  {
-    "provider": "Amazon Bedrock",
-    "model_id": "bedrock-twelvelabs-pegasus-1-2",
-    "model_name": "TwelveLabs: Pegasus 1.2",
-    "pricing": {
-      "standard": {
-        "input": {
-          "price_per_million_tokens": 8.0,
-          "currency": "USD",
-          "region": "us-east-1"
-        }
-      }
     },
     "availability": "production",
     "source": "https://aws.amazon.com/bedrock/pricing/"
