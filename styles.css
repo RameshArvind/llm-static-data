@@ -48,4 +48,31 @@ tbody tr.rank-3{background:linear-gradient(90deg,rgba(205,127,50,0.08),transpare
 #rowCount{margin:8px 2px}
 @media (max-width: 800px){
   .calc-grid{grid-template-columns:1fr 1fr}
+  .site-header{padding:16px}
+  .site-header h1{font-size:20px}
+  .container{padding:12px}
+}
+@media (max-width: 600px){
+  input[type="number"]{min-width:80px;font-size:16px}
+  input[type="text"]{font-size:16px}
+  select{font-size:16px!important}
+  .control{flex-direction:column;align-items:flex-start;width:100%}
+  .control input[type="number"]{width:100%}
+  .control label{font-size:13px;margin-bottom:4px}
+  .preset-btn{font-size:12px;padding:8px 12px;min-height:44px}
+  button{font-size:13px;min-height:44px}
+  #show-help-btn{display:none}
+  .site-header>div{flex-direction:column;gap:12px;align-items:flex-start}
+  .site-header h1{font-size:18px}
+  .site-header .subtitle{font-size:13px}
+  thead th{font-size:11px;padding:6px 4px}
+  tbody td{font-size:12px;padding:6px 4px}
+  .table-controls{flex-direction:column!important;align-items:stretch!important;gap:8px!important}
+  .table-controls>div{min-width:100%!important;width:100%!important;flex:none!important}
+  .table-controls select,.table-controls button{width:100%;font-size:16px;padding:10px 12px}
+  .table-controls input{font-size:16px;padding:10px 12px}
+  .presets>div{gap:6px!important}
+  #save-preset-btn{width:100%;margin-top:4px}
+  .rank-badge{font-size:12px}
+  .avail{font-size:11px}
 }

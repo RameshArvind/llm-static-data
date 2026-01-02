@@ -67,15 +67,15 @@
 
       <section class="table-controls" style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 12px;">
         <div style="flex: 1; min-width: 200px;">
-          <input id="filterInput" type="text" placeholder="🔍 Filter models (try 'claude' or 'gpt')..." style="width: 100%; padding: 8px 12px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 8px; font-size: 14px;" />
+          <input id="filterInput" type="text" placeholder="🔍 Filter models..." style="width: 100%; padding: 8px 12px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 8px; font-size: 14px;" />
         </div>
-        <div style="display: flex; gap: 8px;">
-          <button id="export-csv-btn" style="padding: 6px 12px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; cursor: pointer; font-size: 13px;">📋 CSV</button>
-          <button id="export-md-btn" style="padding: 6px 12px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; cursor: pointer; font-size: 13px;">📋 Markdown</button>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button id="export-csv-btn" style="padding: 6px 12px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; cursor: pointer; font-size: 13px; flex: 1; min-width: 80px;">📋 CSV</button>
+          <button id="export-md-btn" style="padding: 6px 12px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; cursor: pointer; font-size: 13px; flex: 1; min-width: 80px;">📋 MD</button>
         </div>
-        <div style="display: flex; gap: 8px; align-items: center;">
-          <span style="font-size: 13px; color: var(--muted);">Show:</span>
-          <select id="topNFilter" style="padding: 6px 10px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; cursor: pointer; font-size: 13px;">
+        <div style="display: flex; gap: 8px; align-items: center; flex: 1; min-width: 180px;">
+          <label for="topNFilter" style="font-size: 13px; color: var(--muted); white-space: nowrap;">Show:</label>
+          <select id="topNFilter" style="flex: 1; padding: 6px 10px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; cursor: pointer; font-size: 13px;">
             <option value="all">All Models</option>
             <option value="5">Top 5 Cheapest</option>
             <option value="10">Top 10 Cheapest</option>
