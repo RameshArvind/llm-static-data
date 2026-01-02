@@ -1,0 +1,46 @@
+[
+  {
+    "provider": "DeepSeek",
+    "model_id": "deepseek-chat",
+    "model_name": "DeepSeek-V3",
+    "context_length": 64000,
+    "pricing": {
+      "standard": {
+        "input_cache_miss": {
+          "price_per_million_tokens": 0.27,
+          "currency": "USD"
+        },
+        "input_cache_hit": {
+          "price_per_million_tokens": 0.07,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 1.10,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production",
+    "source": "https://api-docs.deepseek.com/quick_start/pricing"
+  },
+  {
+    "provider": "DeepSeek",
+    "model_id": "deepseek-reasoner",
+    "model_name": "DeepSeek-R1",
+    "context_length": 64000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 0.55,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 1.68,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production",
+    "source": "https://api-docs.deepseek.com/quick_start/pricing"
+  }
+]
