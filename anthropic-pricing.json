@@ -59,6 +59,35 @@
   },
   {
     "provider": "Anthropic",
+    "model_id": "claude-opus-4.5",
+    "model_name": "Claude Opus 4.5",
+    "context_length": 200000,
+    "pricing": {
+      "standard": {
+        "input": {
+          "price_per_million_tokens": 5.0,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 25.0,
+          "currency": "USD"
+        }
+      },
+      "batch": {
+        "input": {
+          "price_per_million_tokens": 2.5,
+          "currency": "USD"
+        },
+        "output": {
+          "price_per_million_tokens": 12.5,
+          "currency": "USD"
+        }
+      }
+    },
+    "availability": "production"
+  },
+  {
+    "provider": "Anthropic",
     "model_id": "claude-opus-4.1",
     "model_name": "Claude Opus 4.1",
     "context_length": 200000,
