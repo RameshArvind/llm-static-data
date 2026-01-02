@@ -10,11 +10,30 @@
   </head>
   <body>
     <header class="site-header">
-      <h1>LLM Prices</h1>
-      <p class="subtitle">Static comparison of model pricing from local data</p>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h1>LLM Prices</h1>
+          <p class="subtitle">Static comparison of model pricing from local data</p>
+        </div>
+        <button id="show-help-btn" style="padding: 8px 16px; background: var(--panel); border: 1px solid var(--border); color: var(--accent); border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500;">
+          ⌨️ Shortcuts (?)
+        </button>
+      </div>
     </header>
 
     <main class="container">
+      <section class="presets">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px;">
+          <span style="font-size: 14px; color: var(--muted); font-weight: 500;">Quick Presets:</span>
+          <button class="preset-btn" data-preset="chat">💬 Small Chat</button>
+          <button class="preset-btn" data-preset="context">📚 Long Context</button>
+          <button class="preset-btn" data-preset="agent">🤖 Daily Agent</button>
+          <button class="preset-btn" data-preset="batch">📦 Batch Processing</button>
+          <button class="preset-btn" data-preset="custom1" id="custom-preset-1" style="display: none;"></button>
+          <button id="save-preset-btn" style="padding: 6px 12px; background: var(--panel); border: 1px solid var(--border); color: var(--accent); border-radius: 6px; cursor: pointer; font-size: 13px;">💾 Save Custom</button>
+        </div>
+      </section>
+
       <section class="controls">
         <div class="control">
           <label for="inputTokens">Input token count</label>
@@ -46,7 +65,23 @@
         </div>
       </section>
 
-      
+      <section class="table-controls" style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 12px;">
+        <div style="flex: 1; min-width: 200px;">
+          <input id="filterInput" type="text" placeholder="🔍 Filter models..." style="width: 100%; padding: 8px 12px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 8px; font-size: 14px;" />
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button id="export-csv-btn" style="padding: 6px 12px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; cursor: pointer; font-size: 13px; flex: 1; min-width: 80px;">📋 CSV</button>
+          <button id="export-md-btn" style="padding: 6px 12px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; cursor: pointer; font-size: 13px; flex: 1; min-width: 80px;">📋 MD</button>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center; flex: 1; min-width: 180px;">
+          <label for="topNFilter" style="font-size: 13px; color: var(--muted); white-space: nowrap;">Show:</label>
+          <select id="topNFilter" style="flex: 1; padding: 6px 10px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; cursor: pointer; font-size: 13px;">
+            <option value="all">All Models</option>
+            <option value="5">Top 5 Cheapest</option>
+            <option value="10">Top 10 Cheapest</option>
+          </select>
+        </div>
+      </section>
 
       <section>
         <div class="table-wrap">
